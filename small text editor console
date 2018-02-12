@@ -1,0 +1,94 @@
+package com.gmail.sersaseks;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) throws FileNotFoundException {
+
+		Scanner sn = new Scanner(System.in);
+
+		FileCrietiv f = new FileCrietiv();
+
+		f.start();
+	}
+}
+package com.gmail.sersaseks;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class FileCrietiv {
+
+	public String b;
+
+	Scanner sn = new Scanner(System.in);
+
+	public void start() throws FileNotFoundException {
+		String y;
+		System.out.println("Для записи введи Write");
+		System.out.println("Для чтения введи Print");
+		for (;;) {
+			y = sn.nextLine();
+
+			if (y.equals("Write")) {
+				textInput();
+			} else {
+				if (y.equals("Print")) {
+					ridFile();
+				} else {
+					break;
+				}
+			}
+		}
+	}
+
+	private void ridFile() {
+		String f;
+		System.out.println("Введите адрес файла для чтения");
+		f = sn.nextLine();
+
+		try (FileReader reader = new FileReader(f)) {
+			int c;
+			while ((c = reader.read()) != -1) {
+
+				System.out.print((char) c);
+			}
+		} catch (IOException ex) {
+
+			System.out.println(ex.getMessage());
+		}
+
+	}
+
+	private void textInput() throws FileNotFoundException {
+		System.out.println("Введите имя фальла в формате File Name.txt");
+		b = sn.nextLine();
+		System.out.println("Для завершения введите StopPr");
+
+		printInp();
+	}
+
+	private void printInp() throws FileNotFoundException {
+		String c;
+		try (PrintWriter a = new PrintWriter(b)) {
+			for (;;) {
+				c = sn.nextLine();
+				if (c.equals("StopPr")) {
+					System.out.println("Работа программы заверешена");
+					break;
+				} else {
+					a.println(c);
+				}
+			}
+
+		} catch (FileNotFoundException e) {
+			System.out.println("ERROR FILE WRITE");
+		}
+	}
+
+}
