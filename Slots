@@ -1,0 +1,339 @@
+package com.gmai.sersaseks;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Core c = new Core();
+
+		c.start();
+
+	}
+
+}
+package com.gmai.sersaseks;
+
+import java.util.Scanner;
+
+public class Core {
+
+	private boolean triger = false;
+	private int coins;
+	private int a1;
+	private int a2;
+	private int a3;
+	private int b1;
+	private int b2;
+	private int b3;
+	private int c1;
+	private int c2;
+	private int c3;
+
+	public Core(int coins, int a1, int a2, int a3, int b1, int b2, int b3, int c1, int c2, int c3) {
+		super();
+		this.coins = coins;
+		this.a1 = a1;
+		this.a2 = a2;
+		this.a3 = a3;
+		this.b1 = b1;
+		this.b2 = b2;
+		this.b3 = b3;
+		this.c1 = c1;
+		this.c2 = c2;
+		this.c3 = c3;
+	}
+
+	public boolean isTriger() {
+		return triger;
+	}
+
+	public void setTriger(boolean triger) {
+		this.triger = triger;
+	}
+
+	public Core() {
+		super();
+	}
+
+	public int getCoins() {
+		return coins;
+	}
+
+	public void setCoins(int coins) {
+		this.coins = coins;
+	}
+
+	public int getA1() {
+		return a1;
+	}
+
+	public void setA1(int a1) {
+		this.a1 = a1;
+	}
+
+	public int getA2() {
+		return a2;
+	}
+
+	public void setA2(int a2) {
+		this.a2 = a2;
+	}
+
+	public int getA3() {
+		return a3;
+	}
+
+	public void setA3(int a3) {
+		this.a3 = a3;
+	}
+
+	public int getB1() {
+		return b1;
+	}
+
+	public void setB1(int b1) {
+		this.b1 = b1;
+	}
+
+	public int getB2() {
+		return b2;
+	}
+
+	public void setB2(int b2) {
+		this.b2 = b2;
+	}
+
+	public int getB3() {
+		return b3;
+	}
+
+	public void setB3(int b3) {
+		this.b3 = b3;
+	}
+
+	public int getC1() {
+		return c1;
+	}
+
+	public void setC1(int c1) {
+		this.c1 = c1;
+	}
+
+	public int getC2() {
+		return c2;
+	}
+
+	public void setC2(int c2) {
+		this.c2 = c2;
+	}
+
+	public int getC3() {
+		return c3;
+	}
+
+	public void setC3(int c3) {
+		this.c3 = c3;
+	}
+
+	public void start() {
+		user();
+	}
+
+	private void user() {
+
+		setTriger(false);
+		setCoins(10);
+
+		Scanner sc = new Scanner(System.in);
+
+		String a;
+
+		System.out.println("Hi gamer:)");
+		System.out.println("If you want play enterp - Go");
+		System.out.println("If you want stop the game enterp - Stop -");
+		System.out.println("If you want out enterp - Out");
+		System.out.println("If you want play new game enterp - New");
+
+		for (;;) {
+			a = sc.nextLine();
+
+			if (getCoins() == 0) {
+				setTriger(true);
+			}
+
+			if (isTriger() == true) {
+				System.out.println("Game over:(");
+				user();
+			}
+
+			if (a.equals("Go")) {
+				slots();
+			}
+			if (a.equals("Stop")) {
+				continue;
+			}
+			if (a.equals("Out")) {
+				System.out.println("Adios");
+				break;
+			}
+			if (a.equals("New")) {
+				slots();
+			}
+
+		}
+		sc.close();
+	}
+
+	private void slots() {
+
+		System.out.println("Your balans " + getCoins());
+		System.out.println();
+		random();
+		System.out.println();
+		out();
+		System.out.println();
+		analis();
+
+	}
+
+	private int randomVar() {
+		int a;
+
+		a = (int) (Math.random() * 99);
+
+		return a;
+	}
+
+	private void random() {
+		setA1(randomVar());
+		setA2(randomVar());
+		setA2(randomVar());
+		setA3(randomVar());
+		setB1(randomVar());
+		setB2(randomVar());
+		setB3(randomVar());
+		setC1(randomVar());
+		setC2(randomVar());
+		setC3(randomVar());
+
+	}
+
+	private void out() {
+		System.out.println();
+		System.out.println(getA1() + " " + getA2() + " " + getA3());
+		System.out.println(getB1() + " " + getB2() + " " + getB3());
+		System.out.println(getC1() + " " + getC2() + " " + getC3());
+		System.out.println();
+	}
+
+	private void analis() {
+
+		for (;;) {
+
+			if ((getA1() == getA2()) && (getA1() == getA3())) {
+				System.out.println("You are vone 10000 coins!");
+				setCoins(getCoins() + 9999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if ((getB1() == getB2()) && (getB1() == getB3())) {
+				System.out.println("You are vone 10000 coins!");
+				setCoins(getCoins() + 9999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if ((getC1() == getC2()) && (getC1() == getC3())) {
+				System.out.println("You are vone 10000 coins!");
+				setCoins(getCoins() + 9999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if ((getA1() == getB2()) && (getB2() == getC3())) {
+				System.out.println("You are vone 10000 coins!");
+				setCoins(getCoins() + 9999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if ((getC1() == getB2()) && (getC1() == getA3())) {
+				System.out.println("You are vone 10000 coins!");
+				setCoins(getCoins() + 9999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if (getA1() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if (getA2() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if (getA3() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if (getC1() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if (getC2() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if (getC3() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if (getB1() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+				// a = a + 1;
+				break;
+			}
+			if (getB2() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			if (getB3() == 77) {
+				System.out.println("You are vone 1000 coins!");
+				setCoins(getCoins() + 999);
+				System.out.println("Your balans " + getCoins());
+
+				break;
+			}
+			setCoins(getCoins() - 1);
+			System.out.println("You are iose(: " + "Your balans " + getCoins());
+			break;
+
+		}
+
+	}
+
+}
