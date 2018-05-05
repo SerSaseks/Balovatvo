@@ -149,10 +149,10 @@ public class Core {
 		String a;
 
 		System.out.println("Hi gamer:)");
-		System.out.println("If you want play enterp - Go");
-		System.out.println("If you want stop the game enterp - Stop -");
-		System.out.println("If you want out enterp - Out");
-		System.out.println("If you want play new game enterp - New");
+		System.out.println("If you want play enter - Go");
+		System.out.println("If you want stop the game enter - Stop -");
+		System.out.println("If you want out enter - Out");
+		System.out.println("If you want play new game enter - New");
 
 		for (;;) {
 			a = sc.nextLine();
